@@ -7,8 +7,14 @@ const handler = async (req, res) => {
 
     const { email } = req.query
     const { id } = req.query
+    const { API_ROUTE_SECRET } = req.query
     console.log('email ' + email)
     console.log('id ' + id)
+    console.log('API_ROUTE_SECRET ' + API_ROUTE_SECRET)
+
+    if (API_ROUTE_SECRET !== process.env.API_ROUTE_KEY) {
+        return res.status(401).send('You are not authorized to use this API.')
+    }
 
     const stripe = initStripe(process.env.STRIPE_SECRET_KEY)
     const customer = await stripe.customers.create({

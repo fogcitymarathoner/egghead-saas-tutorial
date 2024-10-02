@@ -17,8 +17,15 @@ url = 'http://localhost:3000/api/create-stripe-customer'
 # Define the parameters
 params = {
     'email': 'jon@test.com',
-    'id': '43067903-0bbb-4c0c-a20e-a6a9e3e8dfc3'
+    'id': '43067903-0bbb-4c0c-a20e-a6a9e3e8dfc3',
+    'API_ROUTE_SECRET': "1256a38bd2a4995f5067d4eb2fc6aa6e"
     }
+# testing 401 trap
+##params_bad = {
+##    'email': 'jon@test.com',
+##    'id': '43067903-0bbb-4c0c-a20e-a6a9e3e8dfc3',
+##    'API_ROUTE_SECRET': 'EEE6a38bd2a4995f5067d4eb2fc6aa6e'
+##    }
 
 
 # Send the GET request with parameters
