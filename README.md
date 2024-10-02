@@ -1,7 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ### Attribution
 Following Tutorial [Build a SaaS product with Next.js, Supabase and Stripe](https://egghead.io/lessons/supabase-create-a-supabase-project)
-
+### setting up create_new_user_profile trigger
+Cannot use WEB Interface to create trigger
+Must use sql window
+[User Management](https://supabase.com/docs/guides/auth/managing-user-data)
 ## Getting Started
 
 First, run the development server:

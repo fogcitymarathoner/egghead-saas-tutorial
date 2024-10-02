@@ -13,11 +13,14 @@ export default function Home({lessons}) {
         fetchUser();
     }, []);
     console.log({lessons});
-    console.log('supabase.auth ' + Object.keys(user));
-    console.log('supabase.auth ' + user.id);
-    console.log('supabase.auth ' + user.email);
-    console.log('supabase.auth ' + Object.keys(user.user_metadata));
-    console.log('supabase.auth ' + user.user_metadata.user_name);
+    if (user){
+        console.log('supabase.auth ' + Object.keys(user));
+        console.log('supabase.auth ' + user.id);
+        console.log('supabase.auth ' + user.email);
+        console.log('supabase.auth ' + Object.keys(user.user_metadata));
+        console.log('supabase.auth ' + user.user_metadata.user_name);
+    }
+
   return (
     <div
       className="w-full max-w-3xl mx-auto my-16 px-2"
