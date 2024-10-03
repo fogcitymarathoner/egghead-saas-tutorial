@@ -5,6 +5,11 @@ Following Tutorial [Build a SaaS product with Next.js, Supabase and Stripe](http
 Cannot use WEB Interface to create trigger
 Must use sql window
 [User Management](https://supabase.com/docs/guides/auth/managing-user-data)
+### Ngrok must be configured to forward Non-SSL requests
+SSL requests stall the create-stripe-customer callback
+```aiignore
+ngrok http 3000 --schema http,https
+```
 ## Getting Started
 
 First, run the development server:

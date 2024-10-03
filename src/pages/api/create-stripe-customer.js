@@ -1,12 +1,15 @@
 import initStripe from  'stripe'
 import '@/envConfig.js'
-import {supabase} from "@/utils/supabase";
+import {supabase} from "@/utils/supabase"
 
 const handler = async (req, res) => {
+    console.log('**************handler()')
+    console.log('body ' + JSON.stringify(req.body))
     console.log('create-stripe-customer handler() process.env.STRIPE_SECRET_KEY ' + process.env.STRIPE_SECRET_KEY)
-
-    const { email } = req.query
-    const { id } = req.query
+    console.log('req.headers ' + JSON.stringify(req.headers, null, "\t"))
+    console.log('req.query ' + JSON.stringify(req.query, null, "\t"))
+    const email = req.body.record.email
+    const id = req.body.record.id
     const { API_ROUTE_SECRET } = req.query
     console.log('email ' + email)
     console.log('id ' + id)
