@@ -1,6 +1,6 @@
 import initStripe from 'stripe';
-import '@/envConfig.ts';
-import { supabase } from "@/utils/supabase";
+import '@/envConfig';
+import { supabase } from '@/utils/supabase';
 
 export async function POST(req: Request): Promise<Response> {
     console.log('************** create-stripe-user POST()');
@@ -20,7 +20,7 @@ export async function POST(req: Request): Promise<Response> {
             { status: 401, headers: { 'Content-Type': 'application/json' } }
         );
     }
-    const stripe = initStripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = new initStripe(process.env.STRIPE_SECRET_KEY);
     const customer = await stripe.customers.create({
         email: email
     });
