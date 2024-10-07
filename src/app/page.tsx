@@ -31,7 +31,7 @@ export default async function Home() {
 }
 
 
-export const getData = async () => {
+const getData = async () => {
   const {data: lessons} = await supabase.from('lessons').select('*');
   console.log('getStaticProps ' + lessons);
 
