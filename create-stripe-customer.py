@@ -80,3 +80,13 @@ response = requests.post(url, json=params)
 print(response.text)
 
 print(response.status_code)
+# netlify testing
+url = 'https://67045da5e0812c518a7b3fd2--ubiquitous-smakager-2f8417.netlify.app//api/create-stripe-customer'
+
+response = requests.post(url, json=params)
+
+# Print the response content
+print('Netlify results')
+print(response.text)
+
+print(response.status_code)
