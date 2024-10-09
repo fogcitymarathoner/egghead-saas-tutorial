@@ -13,7 +13,7 @@ export default async function LessonDetailsPage({ params }: { params: { id: stri
     )
 }
 
-const getData = async (id) => {
+const getData = async (id: string) => {
     const {data: lesson} = await supabase.from('lessons').select('*').eq('id', id).single();
     console.log('getData [id] ' + lesson);
 

@@ -20,7 +20,8 @@ export async function POST(req: Request): Promise<Response> {
             { status: 401, headers: { 'Content-Type': 'application/json' } }
         );
     }
-    const stripe = new initStripe(process.env.STRIPE_SECRET_KEY);
+    const stripe_key = process.env.STRIPE_SECRET_KEY ? process.env.STRIPE_SECRET_KEY : 'sss'
+    const stripe = new initStripe(stripe_key);
     const customer = await stripe.customers.create({
         email: email
     });
