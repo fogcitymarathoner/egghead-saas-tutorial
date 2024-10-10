@@ -12,6 +12,8 @@ export async function middleware(request: NextRequest) {
 
   const user = await getUser(request, response);
 
+  const userJsonString = JSON.stringify(user);
+  console.log('middleware user ' + userJsonString);
   if (path === "/protected-route" && !user) {
     return NextResponse.redirect(new URL("/login", request.url));
   }

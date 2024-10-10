@@ -1,11 +1,20 @@
 import {supabase} from "@/utils/supabase";
+import {getUser} from "@/lib/auth"
 
 import Link from "next/link";
 
 export default async function Home() {
-    const data = await getData()
-    console.log(data)
-    const lessons = data.props.lessons ? data.props.lessons : []
+    const user = await getUser();
+    const userJsonString = JSON.stringify(user);
+    console.log('user ' + userJsonString);
+    const user_id = user!.id
+    const profile = await getProfile(user_id);
+
+    const profileJsonString = JSON.stringify(profile);
+    console.log('profile ' + profileJsonString);
+
+    const lessons_data = await getData()
+    const lessons = lessons_data.props.lessons ? lessons_data.props.lessons : []
 
     console.log({lessons});
     /*
@@ -20,7 +29,6 @@ export default async function Home() {
 
     return (
         <>
-
             <div className="w-full max-w-3xl mx-auto my-16 px-2">
                 {lessons.map((lesson) => (
                     <Link key={lesson.id} href={`/protected-route/${lesson.id}`} legacyBehavior>
@@ -32,10 +40,24 @@ export default async function Home() {
 }
 
 
+const getProfile = async (id: any) => {
+    /*(auth.uid() = id)
+    * 99859050-b9d7-4e2b-b65e-4ffa4990e9b0
+    * 99859050-b9d7-4e2b-b65e-4ffa4990e9b0*/
+    console.log('getProfile id ' + id);
+    const {data: profile } = await supabase.from('profile').select('*').eq('id', id).single();
+    console.log('getProfile ' + profile);
+    console.log('getProfile error');
+    return {
+        props: {
+            profile,
+        }
+    }
+}
+
 const getData = async () => {
     const {data: lessons} = await supabase.from('lessons').select('*');
-    console.log('getStaticProps ' + lessons);
-
+    console.log('getData ' + lessons);
     return {
         props: {
             lessons,

@@ -71,3 +71,7 @@ My links:
 - LinkedIn 👉 https://linkedin.com/in/cole-blender
 
 Video 👉 https://www.youtube.com/watch?v=g3chAFaqr_c&t=811s
+
+# BUGS
+1) text-white in button element className breaks the browser.  all pages turn white
+2) 
