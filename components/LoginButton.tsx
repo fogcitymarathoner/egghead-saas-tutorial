@@ -18,14 +18,15 @@ function LoginButton() {
         console.log('redirecting to ' + url)
         router.push(url);
       } else {
-        toast.error(errorMessage);
+        console.log('Something bad happened in the login button component')
+        console.log(errorMessage);
       }
     });
   };
 
   return (
     <button
-      className="bg-black border-white border w-48 py-2 rounded-md hover:bg-emerald-950 flex items-center justify-center gap-2"
+      className="text-white bg-black border-white border w-48 py-2 rounded-md hover:bg-emerald-950 flex items-center justify-center gap-2"
       onClick={() => handleClickLoginButton("github")}
       disabled={isPending}
     >

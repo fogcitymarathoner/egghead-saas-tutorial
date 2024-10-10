@@ -9,9 +9,10 @@ function SignOutButton() {
     startTransition(async () => {
       const { errorMessage } = await signOutAction();
       if (!errorMessage) {
-        toast.success("Successfully signed out");
+        console.log("Successfully signed out");
       } else {
-        toast.error(errorMessage);
+        console.log('Something bad happened in the signout compoent')
+        console.log(errorMessage);
       }
     });
   };

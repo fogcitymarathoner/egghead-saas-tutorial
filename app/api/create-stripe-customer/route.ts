@@ -1,9 +1,10 @@
 import initStripe from 'stripe';
 import '@/envConfig';
-import { supabase } from '@/utils/supabase';
+import { createClient } from '@/utils/supabase/client';
 
 export async function POST(req: Request): Promise<Response> {
     console.log('************** create-stripe-user POST()');
+    const supabase = createClient()
     const body = await req.json();
     const email: string = body.record.email;
     const id: string = body.record.id;

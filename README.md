@@ -1,4 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Authentication scheme from 
+[Supabase DOCS Auth Page](https://supabase.com/docs/guides/auth/quickstarts/nextjs)
 ### Attribution
 Following Tutorial [Build a SaaS product with Next.js, Supabase and Stripe](https://egghead.io/lessons/supabase-create-a-supabase-project)
 ### @supabase/auth-helpers-nextjs has been replaced with @supabase/ssr
