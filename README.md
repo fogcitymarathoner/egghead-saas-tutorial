@@ -3,9 +3,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 [Supabase DOCS Auth Page](https://supabase.com/docs/guides/auth/quickstarts/nextjs)
 ### Attribution
 Following Tutorial [Build a SaaS product with Next.js, Supabase and Stripe](https://egghead.io/lessons/supabase-create-a-supabase-project)
-### @supabase/auth-helpers-nextjs has been replaced with @supabase/ssr
-Based on this video
-[](https://www.youtube.com/watch?v=g3chAFaqr_c)
+### Deploying to netlify from powershell
+```aiignore
+$env:NETLIFY_AUTH_TOKEN = 'dddd'
+$env:NETLIFY_SITE_ID = 'dddddd9'
+netlify deploy --build --prod
+```
+
 ### setting up create_new_user_profile trigger
 Cannot use WEB Interface to create trigger
 Must use sql window

@@ -14,7 +14,7 @@ export default async function Login({ searchParams }: { searchParams: Message })
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log('sign-up user ' + user)
+  console.log('sign-up current_user ' + user)
 
   return (
     <form className="flex-1 flex flex-col min-w-64">

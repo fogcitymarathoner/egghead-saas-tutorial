@@ -15,7 +15,7 @@ export default async function Signup({ searchParams }: { searchParams: Message }
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  console.log('sign-up user ' + user)
+  console.log('sign-up current_user ' + user)
   if ("message" in searchParams) {
     return (
       <div className="w-full flex-1 flex items-center h-screen sm:max-w-md justify-center gap-2 p-4">
