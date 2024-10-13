@@ -1,6 +1,6 @@
 import {createClient} from "@/utils/supabase/server";
 import { NextResponse } from 'next/server'
-
+/* FIXME: remove when app router getStaticPaths is figured out */
 
 export async function GET(req: Request, context: any): Promise<Response> {
     /* Returns public lesson #id, no need to protect */

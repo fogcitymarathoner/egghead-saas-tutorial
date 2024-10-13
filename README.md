@@ -9,6 +9,12 @@ $env:NETLIFY_AUTH_TOKEN = 'dddd'
 $env:NETLIFY_SITE_ID = 'dddddd9'
 netlify deploy --build --prod
 ```
+### next lint does not work in "eslint": "^9.12.0"
+When fixed
+```aiignore
+"eslint-config-next": "^14.2.0",
+```
+should configure it to work.
 
 ### setting up create_new_user_profile trigger
 Cannot use WEB Interface to create trigger
