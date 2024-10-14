@@ -14,8 +14,7 @@ interface Plan {
 
 export async function plans() {
     console.log('stripe plans, at build time????')
-/*    const stripe_key = process.env.STRIPE_SECRET_KEY ? process.env.STRIPE_SECRET_KEY : 'sss'
-    const stripe = new initStripe(stripe_key)*/
+
     const stripe = new initStripe(process.env.STRIPE_SECRET_KEY!)
     const {data: prices} = await stripe.prices.list()
 
@@ -31,15 +30,19 @@ export async function plans() {
         console.log('product ' + Object.keys(product))
         console.log('product ' + product)
         console.log('price ' + Object.keys(price))
+        console.log('price cents ' + price.unit_amount)
+        const price_dollars = price.unit_amount?price.unit_amount!/100:0
+        console.log('price dollars ' + price_dollars)
         return {
             id: price.id,
             name: product.name,
-            price: price.unit_amount,
+            price: price_dollars,
             interval: price.recurring!.interval,
             currency: price.currency,
         }
     }))
     const sortedPlans: Plan[] = plans.sort((a, b) => a.price! - b.price!)
+    console.log('/lib/stripe - sortedPlans', JSON.stringify(sortedPlans, null, 2))
     return {
         props: {
             sortedPlans,
