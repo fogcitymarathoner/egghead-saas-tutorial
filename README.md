@@ -25,6 +25,9 @@ SSL requests stall the create-stripe-customer callback
 ```aiignore
 ngrok http 3000 --schema http,https
 ```
+### NOTE: RLS has to be handled in-code because static code is retrieved as superuser
+Test RLS exercises in /api/protected
+
 ## Getting Started
 
 First, run the development server:
