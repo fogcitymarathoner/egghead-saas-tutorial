@@ -2,9 +2,7 @@ import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Check} from "lucide-react";
 import PaymentLink from "./PaymentLink";
-// FIXME:remove
-import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
-//
+
 enum PopularPlanType {
     NO = 0,
     YES = 1,
@@ -56,12 +54,9 @@ const pricingList: PricingProps[] = [
         billing: "/year",
     },
 ];
-console.log('price list' + JSON.stringify(pricingList));
-export const Pricing = async () => {
-    // FIXME:remove
-    const { getUser } = getKindeServerSession();
-    const user = await getUser();
-    //
+
+export const Pricing = () => {
+
     return (
         <section id='pricing' className='container py-24 sm:py-32'>
             <h2 className='text-3xl md:text-4xl font-bold text-center'>

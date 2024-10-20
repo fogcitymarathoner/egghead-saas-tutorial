@@ -13,7 +13,6 @@ const Page = () => {
         queryKey: ["checkAuthStatus"],
         queryFn: async () => await checkAuthStatus(),
     });
-    console.log('/auth/callback query data ' + data);
     useEffect(() => {
         const stripePaymentLink = localStorage.getItem("stripePaymentLink");
         if (data?.success && stripePaymentLink && user?.email) {

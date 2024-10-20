@@ -31,9 +31,7 @@ const routeList: RouteProps[] = [
 
 export const Navbar = () => {
 	const { isAuthenticated } = useKindeBrowserClient();
-	// FIXME: remove
-	console.log('Navbar isAuthenticated ' + isAuthenticated);
-	//
+
 	const { data } = useQuery({
 		queryKey: ["isUserSubscribed"],
 		queryFn: async () => isUserSubscribed(),
