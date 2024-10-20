@@ -57,12 +57,6 @@ const pricingList: PricingProps[] = [
 ];
 console.log('price list' + JSON.stringify(pricingList));
 export const Pricing = async () => {
-
-    const res = await fetch('https://api.ipify.org?format=json');
-    const data = await res.json();
-    console.log('db connection test - IP ' + JSON.stringify(data))
-/*    const users = await prisma.user.findMany()
-    console.log('db connection test - all users ' + JSON.stringify(users))*/
     return (
         <section id='pricing' className='container py-24 sm:py-32'>
             <h2 className='text-3xl md:text-4xl font-bold text-center'>
