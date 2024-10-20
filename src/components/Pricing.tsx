@@ -2,6 +2,7 @@ import {Badge} from "@/components/ui/badge";
 import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Check} from "lucide-react";
 import PaymentLink from "./PaymentLink";
+import prisma from "@/db/prisma";
 
 enum PopularPlanType {
 	NO = 0,
@@ -54,6 +55,8 @@ const pricingList: PricingProps[] = [
 		billing: "/year",
 	},
 ];
+const users = await prisma.user.findMany()
+console.log('db connection test - all users ' + JSON.stringify(users))
 console.log('price list' + JSON.stringify(pricingList));
 export const Pricing = () => {
 	return (
