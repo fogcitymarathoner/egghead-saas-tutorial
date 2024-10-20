@@ -118,7 +118,6 @@ export const Pricing = () => {
                         </CardFooter>
                     </Card>
                 ))}
-                {user && (<div>{JSON.stringify(user)}</div>)}
             </div>
         </section>
     );
