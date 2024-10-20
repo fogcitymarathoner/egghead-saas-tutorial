@@ -54,7 +54,7 @@ const pricingList: PricingProps[] = [
 		billing: "/year",
 	},
 ];
-
+console.log('price list' + JSON.stringify(pricingList));
 export const Pricing = () => {
 	return (
 		<section id='pricing' className='container py-24 sm:py-32'>
