@@ -1,25 +1,31 @@
+'use client'
 import prisma from "@/db/prisma";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import {checkAuthStatus} from "@/app/auth/callback/actions";
+import {getDBUser} from "./actions"
 // FIXME: remove this test page
 
 interface UserValue { id: string; email: string; name: string | null; image: string | null; plan: string | null; customerId: string | null; createdAt: Date; updatedAt: Date; }
 // db access doe not work in deploy
-const Page = async () => {
+const Page = () => {
+    const { isAuthenticated, user } = useKindeBrowserClient();
+    // FIXME: remove
+    console.log('user-test isAuthenticated ' + isAuthenticated);
+    console.log('user-test user' + JSON.stringify(user));
+    const { data } = useQuery({
+        queryKey: ["getDBUser"],
+        queryFn: async () => await getDBUser(),
+    });
 
-    const { getUser } = getKindeServerSession();
-    const user = await getUser();
-    let userProfile = null
-    if(user) {
-        userProfile = await prisma.user.findUnique({where: {id: user.id}});
-    }
+    console.log('user-test data' + JSON.stringify(user));
 
     return (<div className='max-w-7xl mx-auto'>
         <section>
             <pre>{JSON.stringify(user)}</pre>
         </section>
         <section>
-            <pre>{JSON.stringify(userProfile)}</pre>
+            <pre>{JSON.stringify(data)}</pre>
         </section>
     </div>)
 };
