@@ -3,6 +3,7 @@ import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} f
 import {Check} from "lucide-react";
 import PaymentLink from "./PaymentLink";
 import prisma from "@/db/prisma";
+import {getKindeServerSession} from "@kinde-oss/kinde-auth-nextjs/server";
 
 enum PopularPlanType {
     NO = 0,
@@ -57,6 +58,8 @@ const pricingList: PricingProps[] = [
 ];
 console.log('price list' + JSON.stringify(pricingList));
 export const Pricing = async () => {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
     return (
         <section id='pricing' className='container py-24 sm:py-32'>
             <h2 className='text-3xl md:text-4xl font-bold text-center'>
@@ -118,6 +121,7 @@ export const Pricing = async () => {
                         </CardFooter>
                     </Card>
                 ))}
+                {user && (<div>{JSON.stringify(user)}</div>)}
             </div>
         </section>
     );
