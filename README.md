@@ -8,7 +8,17 @@ full circle nextjs-stripe-nextjs stripe checkout was bad.
 * Stripe Payment Processing
 * MongoDB
 * Netlify
-* 
+
+## Mongo DB Setup
+Leave firewall wide open for ***Netlify*** access (0.0.0.0/0)
+Configure access string given by Atlas/Mongo with user/password
+```aiignore
+DATABASE_URL=mongodb+srv://<USER>:<PASSWORD>@cluster0.z4j0c.mongodb.net/Project0?retryWrites=true&w=majority&appName=Cluster0
+```
+### Run Collection Creation Migration
+```aiignore
+npx prisma db push
+```
 ### Ngrok must be configured to forward Non-SSL requests
 SSL requests stall the create-stripe-customer callback
 ```aiignore
