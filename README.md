@@ -7,7 +7,8 @@ full circle nextjs-stripe-nextjs stripe checkout was bad.
 * Kinde Authentication
 * Stripe Payment Processing
 * MongoDB
-* Netlify
+* Prisma
+* Vercel
 
 ## Mongo DB Setup
 Leave firewall wide open for ***Netlify*** access (0.0.0.0/0)
@@ -19,10 +20,19 @@ DATABASE_URL=mongodb+srv://<USER>:<PASSWORD>@cluster0.z4j0c.mongodb.net/Project0
 ```aiignore
 npx prisma db push
 ```
-### Ngrok must be configured to forward Non-SSL requests
+### Testing Stripe
+Open testing proxy stripe-cli
+```aiignore
+./stripe listen --forward-to localhost:3000/api/webhooks/stripe
+```
+### Ngrok must be configured to forward Non-SSL requests - Not needed for latest version
 SSL requests stall the create-stripe-customer callback
 ```aiignore
 ngrok http 3000 --schema http,https
+```
+## vercel
+```aiignore
+ vercel redeploy https://vercel-deploy-tst-fogcitymarathoner-marc-condons-projects.vercel.app/
 ```
 ### NOTE: RLS has to be handled in-code because static code is retrieved as superuser
 Test RLS exercises in /api/protected

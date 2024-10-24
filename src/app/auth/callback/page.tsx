@@ -15,7 +15,6 @@ const Page = () => {
     });
     useEffect(() => {
         const stripePaymentLink = localStorage.getItem("stripePaymentLink");
-        console.log('user?.email) ' + user?.email)
         if (data?.success && stripePaymentLink && user?.email) {
             localStorage.removeItem("stripePaymentLink");
             router.push(stripePaymentLink + `?prefilled_email=${user.email}`);

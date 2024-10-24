@@ -46,6 +46,7 @@ stripe.exe
 .idea
 /venv
 ngrok.exe
+stripe.exe
 requirements.txt
 ./idea
 .env.local

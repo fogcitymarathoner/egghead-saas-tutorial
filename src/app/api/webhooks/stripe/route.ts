@@ -9,12 +9,9 @@ export async function POST(req: Request) {
 
     const sig = req.headers.get("stripe-signature")!;
     let event: Stripe.Event;
-    console.log('api/webhooks/stripe event')
     try {
         event = stripe.webhooks.constructEvent(body, sig, WEBHOOK_SECRET);
-        console.log('api/webhooks/stripe event' + event.type)
     } catch (err: any) {
-        console.error("Webhook signature verification failed.", err.message);
         return new Response(`Webhook Error: ${err.message}`, { status: 400 });
     }
 
@@ -32,7 +29,6 @@ export async function POST(req: Request) {
                 const customerDetails = session.customer_details;
 
                 if (customerDetails?.email) {
-                    console.log(' customer ? ' + customerDetails.email)
                     const user = await prisma.user.findUnique({ where: { email: customerDetails.email } });
                     if (!user) throw new Error("User not found");
 
