@@ -50,3 +50,5 @@ requirements.txt
 ./idea
 .env.local
 .netlify/
+
+.vercel
